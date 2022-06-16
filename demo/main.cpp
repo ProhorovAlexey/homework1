@@ -1,5 +1,1 @@
-#include <header.hpp>
-
-int main() {
-
-}
+int main() {}
