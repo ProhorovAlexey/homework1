@@ -18,7 +18,7 @@ class unrolled_linked_list {
     unsigned num_elements;
 
     Node() {
-      arr = new T[BucketSize + 1];
+      arr = nullptr;
       next = nullptr;
       num_elements = 0;
     }
@@ -103,7 +103,8 @@ class unrolled_linked_list {
     if (!a.empty()) {
       n_node = a.n_node;
       ull_size = a.ull_size;
-      Node* current = new Node;
+      Node* current = new Node();
+      current->arr = new T[BucketSize + 1];
       head = current;
       Node* a_current = a.head;
       for (unsigned i = 0; i < n_node; i++) {
@@ -112,7 +113,8 @@ class unrolled_linked_list {
           current->arr[j] = a_current->arr[j];
         }
         if (i < n_node - 1) {
-          current->next = new Node;
+          current->next = new Node();
+          current->next->arr = new T[BucketSize + 1];
           current = current->next;
           a_current = a_current->next;
         }
@@ -148,6 +150,7 @@ class unrolled_linked_list {
         n_node = a.n_node;
         ull_size = a.ull_size;
         Node* current = new Node();
+        current->arr = new T[BucketSize + 1];
         head = current;
         Node* a_current = a.head;
         for (unsigned i = 0; i < n_node; i++) {
@@ -157,6 +160,7 @@ class unrolled_linked_list {
           }
           if (i < n_node - 1) {
             current->next = new Node();
+            current->next->arr = new T[BucketSize + 1];
             current = current->next;
             a_current = a_current->next;
           }
@@ -166,7 +170,6 @@ class unrolled_linked_list {
     }
     return *this;
   }
-
 
   bool operator==(unrolled_linked_list& a) {
     if (ull_size == a.ull_size && n_node == a.n_node) {
@@ -191,7 +194,8 @@ class unrolled_linked_list {
 
   void push_back(T value) {
     if (head == nullptr) {
-      head = new Node;
+      head = new Node();
+      head->arr = new T[BucketSize + 1];
       head->arr[0] = value;
       head->num_elements++;
       tail = head;
@@ -200,7 +204,8 @@ class unrolled_linked_list {
       tail->arr[tail->num_elements] = value;
       tail->num_elements++;
     } else {
-      Node* new_node = new Node;
+      Node* new_node = new Node();
+      new_node->arr = new T[BucketSize + 1];
       unsigned j = 0;
       for (unsigned i = tail->num_elements / 2 + 1; i < tail->num_elements;
            i++) {
@@ -239,6 +244,7 @@ class unrolled_linked_list {
           for (; i < tail->num_elements - 1; i++) {
             current->arr[BucketSize / 2 + 1 + i] = tail->arr[i];
           }
+          delete[] tail->arr;
           delete tail;
           current->next = nullptr;
           tail = current;
@@ -276,6 +282,7 @@ class unrolled_linked_list {
     tail = head;
     while (current) {
       Node* next = current->next;
+      delete[] current->arr;
       delete current;
       current = next;
     }
