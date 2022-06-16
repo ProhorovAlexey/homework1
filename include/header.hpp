@@ -25,6 +25,7 @@ class unrolled_linked_list {
     ~Node() {
       delete[] arr;
       num_elements = 0;
+      delete next;
     }
   };
 
