@@ -14,16 +14,15 @@ class unrolled_linked_list {
   class Node {
    public:
     T* arr;
-    Node* next = nullptr;
+    Node* next;
     unsigned num_elements;
 
     Node() {
       arr = new T[BucketSize + 1];
+      next = nullptr;
       num_elements = 0;
     }
-    ~Node(){
-        delete[] arr;
-    }
+    ~Node() = default;
   };
 
   Node* head;
@@ -88,7 +87,17 @@ class unrolled_linked_list {
     ull_size = 0;
     n_node = 0;
   }
-  ~unrolled_linked_list() = default;
+  ~unrolled_linked_list() {
+    Node* current = this->head;
+    while(current){
+      Node* next = current->next;
+      delete[] current->arr;
+      delete current;
+      current = next;
+    }
+    n_node = 0;
+    ull_size = 0;
+  }
 
   unrolled_linked_list(const unrolled_linked_list& a) {
     if (!a.empty()) {
