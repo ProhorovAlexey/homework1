@@ -31,7 +31,7 @@ TEST(UnrolledLinkedList, Copy) {
   for (int i = 1; i < 8; i++) ullist.push_back(i);
 
   unrolled_linked_list<int, 5> ullist0 = ullist;
-  unrolled_linked_list<int, 5> ullist1 = ullist;
+  unrolled_linked_list<int, 5> ullist1(ullist);
 
   EXPECT_TRUE(ullist == ullist0);
   EXPECT_TRUE(ullist == ullist1);
