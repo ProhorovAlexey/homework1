@@ -19,7 +19,6 @@ class unrolled_linked_list {
 
     Node() {
       arr = new T[BucketSize + 1];
-      next = nullptr;
       num_elements = 0;
     }
     ~Node() {
