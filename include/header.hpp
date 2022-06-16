@@ -22,7 +22,11 @@ class unrolled_linked_list {
       next = nullptr;
       num_elements = 0;
     }
-    ~Node() = default;
+    ~Node() {
+      delete[] arr;
+      num_elements = 0;
+      next = nullptr;
+    }
   };
 
   Node* head;
