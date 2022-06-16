@@ -36,6 +36,7 @@ class unrolled_linked_list {
     unsigned index = 0;
 
    public:
+    Iterator() = default;
     ~Iterator() = default;
     explicit Iterator(Node* it, unsigned i) : ptr(it), index(i) {}
     Iterator(const Iterator& rhs) : ptr(rhs.ptr), index(rhs.index) {}
