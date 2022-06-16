@@ -89,7 +89,7 @@ class unrolled_linked_list {
   }
   ~unrolled_linked_list() {
     Node* current = this->head;
-    while(current){
+    while (current) {
       Node* next = current->next;
       delete[] current->arr;
       delete current;
