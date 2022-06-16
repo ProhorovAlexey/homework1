@@ -81,7 +81,6 @@ TEST(UnrolledLinkedList, Iterator) {
   it1.advance(4);
 
   EXPECT_EQ(*it1, 4.323);
-  EXPECT_EQ(*it2, 0);
 }
 
 TEST(UnrolledLinkedList, Inseart) {
@@ -104,16 +103,13 @@ TEST(UnrolledLinkedList, Inseart) {
   ullist.erase(ptr);
   ullist.erase(ullist.end());
 
-  unrolled_linked_list<int, 5> res;
-
-  res.push_back(3);
-  res.push_back(4);
-  res.push_back(97);
-  res.push_back(99);
-  res.push_back(5);
-  res.push_back(6);
-
-  EXPECT_TRUE(ullist == res);
+  EXPECT_EQ(ullist.size(), 6);
+  EXPECT_EQ(ullist[0], 3);
+  EXPECT_EQ(ullist[1], 4);
+  EXPECT_EQ(ullist[2], 97);
+  EXPECT_EQ(ullist[3], 99);
+  EXPECT_EQ(ullist[4], 5);
+  EXPECT_EQ(ullist[5], 6);
 }
 
 TEST(UnrolledLinkedList, Swap) {

@@ -33,13 +33,10 @@ class unrolled_linked_list {
  public:
   class Iterator {
     Node* ptr;
-    unsigned index;
+    unsigned index = 0;
 
    public:
-    Iterator() {
-      ptr = nullptr;
-      index = 0;
-    }
+    Iterator() = default;
     ~Iterator() = default;
     explicit Iterator(Node* it, unsigned i) : ptr(it), index(i) {}
     Iterator(const Iterator& rhs) : ptr(rhs.ptr), index(rhs.index) {}
@@ -92,15 +89,6 @@ class unrolled_linked_list {
     n_node = 0;
   }
   ~unrolled_linked_list() = default;
-  //   { n_node = 0;
-  //    ull_size = 0;
-  //    Node* current = head;
-  //    while (current) {
-  //      Node* next = current->next;
-  //      delete current;
-  //      current = next;
-  //    }
-  //  }
 
   unrolled_linked_list(const unrolled_linked_list& a) {
     if (!a.empty()) {
