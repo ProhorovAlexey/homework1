@@ -23,7 +23,7 @@ class unrolled_linked_list {
     }
     ~Node(){
         delete[] arr;
-    };
+    }
   };
 
   Node* head;
