@@ -74,7 +74,6 @@ TEST(UnrolledLinkedList, Iterator) {
   ullist.push_back(6.865);
 
   unrolled_linked_list<double, 4>::Iterator it1 = ullist.begin();
-  unrolled_linked_list<double, 4>::Iterator it2 = ullist.end();
 
   EXPECT_EQ(*it1, 1.123);
 
