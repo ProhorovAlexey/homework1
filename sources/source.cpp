@@ -1,3 +1,1 @@
-//
-// Created by userlinux on 12.06.2022.
-//
+// Copyright 2020 Your Name <your_email>

@@ -1,13 +1,12 @@
-//
-// Created by userlinux on 12.06.2022.
-//
+// Copyright 2020 Your Name <your_email>
 
-#ifndef INCLUDE_HEADER_HPP
-#define INCLUDE_HEADER_HPP
+#ifndef INCLUDE_HEADER_HPP_
+#define INCLUDE_HEADER_HPP_
 
 #include <algorithm>
 #include <cmath>
 #include <exception>
+#include <utility>
 
 template <class T, unsigned BucketSize>
 
@@ -40,7 +39,7 @@ class unrolled_linked_list {
     Iterator() {
       ptr = nullptr;
       index = 0;
-    };
+    }
     ~Iterator() = default;
     explicit Iterator(Node* it, unsigned i) : ptr(it), index(i) {}
     Iterator(const Iterator& rhs) : ptr(rhs.ptr), index(rhs.index) {}
@@ -325,4 +324,4 @@ class unrolled_linked_list {
   }
 };
 
-#endif  // INCLUDE_HEADER_HPP
+#endif  // INCLUDE_HEADER_HPP_
