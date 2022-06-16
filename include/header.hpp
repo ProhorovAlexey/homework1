@@ -14,18 +14,16 @@ class unrolled_linked_list {
   class Node {
    public:
     T* arr;
-    Node* next;
+    Node* next = nullptr;
     unsigned num_elements;
 
     Node() {
       arr = new T[BucketSize + 1];
       num_elements = 0;
     }
-    ~Node() {
-      delete[] arr;
-      num_elements = 0;
-      delete next;
-    }
+    ~Node(){
+        delete[] arr;
+    };
   };
 
   Node* head;
@@ -35,14 +33,10 @@ class unrolled_linked_list {
 
  public:
   class Iterator {
-    Node* ptr;
+    Node* ptr = nullptr;
     unsigned index;
 
    public:
-    Iterator(){
-      ptr = nullptr;
-      index = 0;
-    }
     ~Iterator() = default;
     explicit Iterator(Node* it, unsigned i) : ptr(it), index(i) {}
     Iterator(const Iterator& rhs) : ptr(rhs.ptr), index(rhs.index) {}
@@ -144,7 +138,7 @@ class unrolled_linked_list {
       if (!a.empty()) {
         n_node = a.n_node;
         ull_size = a.ull_size;
-        Node* current = new Node;
+        Node* current = new Node();
         head = current;
         Node* a_current = a.head;
         for (unsigned i = 0; i < n_node; i++) {
@@ -153,7 +147,7 @@ class unrolled_linked_list {
             current->arr[j] = a_current->arr[j];
           }
           if (i < n_node - 1) {
-            current->next = new Node;
+            current->next = new Node();
             current = current->next;
             a_current = a_current->next;
           }
@@ -163,6 +157,7 @@ class unrolled_linked_list {
     }
     return *this;
   }
+
 
   bool operator==(unrolled_linked_list& a) {
     if (ull_size == a.ull_size && n_node == a.n_node) {
